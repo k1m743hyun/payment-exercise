@@ -1,5 +1,6 @@
 package com.k1m743hyun.tosspayments.client;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.net.URI;
@@ -11,7 +12,8 @@ import java.util.Base64;
 @Component
 public class PaymentGatewayClientImpl implements PaymentGatewayClient {
 
-    private final String SECRET_KEY = "test_ak_ZORzdMaqN3wQd5k6ygr5AkYXQGwy:";
+    @Value("${toss-payments.secretKey}")
+    private String secretKey;
 
     @Override
     public String getPaymentsByPaymentKey(String paymentKey) throws Exception {
@@ -57,7 +59,7 @@ public class PaymentGatewayClientImpl implements PaymentGatewayClient {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(uri))
-                .header("Authorization", getAuthorization(SECRET_KEY))
+                .header("Authorization", getAuthorization(secretKey))
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
