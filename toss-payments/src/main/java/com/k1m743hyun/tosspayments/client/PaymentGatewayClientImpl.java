@@ -12,7 +12,7 @@ import java.util.Base64;
 @Component
 public class PaymentGatewayClientImpl implements PaymentGatewayClient {
 
-    @Value("${toss-payments.secretKey}")
+    @Value("${payments.toss.secretKey}")
     private String secretKey;
 
     @Override

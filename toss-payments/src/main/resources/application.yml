@@ -1,2 +1,3 @@
-toss-payments:
-  secretKey: "test_ak_ZORzdMaqN3wQd5k6ygr5AkYXQGwy:"
+payments:
+  toss:
+    secretKey: "test_ak_ZORzdMaqN3wQd5k6ygr5AkYXQGwy:"
